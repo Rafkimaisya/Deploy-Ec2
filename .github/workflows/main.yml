@@ -37,5 +37,7 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           script: |
-            cd project
-            docker-compose down --rmi all --remove-orphans && docker-compose up -d --remove-orphans
+            docker stop g1container
+            docker rm g1container
+            docker rmi rafkimaisya/deploy:latest
+            docker run -d -p 80:80 -e SECRET=${{ secrets.SECRET }} -e SERVERPORT=${{ secrets.SERVERPORT }} -e Name=${{ secrets.Name }} -e Username=${{ secrets.Username }} -e Password=${{ secrets.Password }} -e Address=${{ secrets.Address }} -e DB_Port=${{ secrets.DB_Port }} --name g1container rafkimaisya/deploy:latest
