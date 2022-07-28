@@ -5,7 +5,7 @@ import (
 	"log"
 
 	"github.com/jackthepanda96/Belajar-Rest.git/config"
-	"github.com/jackthepanda96/Belajar-Rest.git/feature/book/data"
+
 	userData "github.com/jackthepanda96/Belajar-Rest.git/feature/user/data"
 
 	"gorm.io/driver/mysql"
@@ -24,5 +24,5 @@ func InitDB(cfg *config.AppConfig) *gorm.DB {
 }
 
 func MigrateData(db *gorm.DB) {
-	db.AutoMigrate(userData.User{}, data.Book{})
+	db.AutoMigrate(userData.User{})
 }
