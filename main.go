@@ -11,6 +11,7 @@ import (
 )
 
 func main() {
+	println("Test Server")
 	cfg := config.GetConfig()
 	db := mysql.InitDB(cfg)
 	mysql.MigrateData(db)
